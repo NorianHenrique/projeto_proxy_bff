@@ -14,7 +14,15 @@ logging.basicConfig(level=logging.INFO)
 # Aplicação Flask
 app = Flask(__name__)
 
-CORS(app, resources={r"/api/*": {"origins": f"{FRONTEND_URL}"}})
+CORS(app,
+     resources={r"/api/*": {
+         "origins": [FRONTEND_URL],
+         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+         "allow_headers": ["Content-Type", "Authorization"],
+         "supports_credentials": True
+     }},
+     expose_headers=["Content-Disposition"]
+)
 
 # Rota para o favicon
 @app.route('/favicon.ico')
@@ -54,4 +62,5 @@ app.register_blueprint(bp_produto)
 # Ponto de entrada para execução
 if __name__ == '__main__':
     logging.info(f"Iniciando o servidor Flask na porta: {PROXY_PORT}")
+    logging.info(f"FRONTEND_URL configurado como: {FRONTEND_URL}")
     app.run(host='0.0.0.0', port=PROXY_PORT, debug=PROXY_DEBUG, use_reloader=PROXY_DEBUG)
