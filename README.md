@@ -1,11 +1,15 @@
 # Projeto Proxy BFF (Backend for Frontend)
-
 ---
 
 ## Visão Geral
 
 Este projeto implementa um Backend for Frontend (BFF). Utilizando o framework Flask em Python. Ele atua como uma camada intermediária (proxy) entre uma aplicação frontend 
 e a API do backend, consolidando e adaptando as chamadas para otimizar a comunicação. O BFF centraliza a lógica de autenticação (obtenção e validação de tokens), tratamento de requisições e respostas, e fornece endpoints específicos para módulos como Funcionários, Clientes e Produtos.
+
+---
+## Status do Projeto
+
+Em desenvolvimento
 
 ---
 
